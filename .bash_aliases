@@ -38,6 +38,7 @@ alias gs='git status'
 alias ga='git add .'
 alias gc='git commit -m'
 alias gp='git push'
+alias gca='ga && gc'
 alias gpo='git push origin'
 
 configGit() {
