@@ -50,6 +50,18 @@ configGitEway() {
     git config user.name "DungND"
 }
 
+# Node
+alias node='docker run --rm -it -v $(pwd):/home/app -w /home/app node:lts-alpine3.10 node'
+alias npm='docker run --rm -it -v $(pwd):/home/app -w /home/app node:lts-alpine3.10 npm'
+
+nodep() {
+    docker run --rm -it -v $(pwd):/home/app -w /home/app --expose $1 -e VIRTUAL_HOST=node.test --network nginx_docker_network node:lts-alpine3.10 node ${@:2}
+}
+
+nodepd() {
+    docker run --rm -it -v $(pwd):/home/app -w /home/app --expose $1 -e VIRTUAL_HOST=$2 --network nginx_docker_network node:lts-alpine3.10 node ${@:3}
+}
+
 # PHP
 alias php='docker run --rm -it -v $(pwd):/home/app dangdungcntt/php:7.4-nginx php'
 alias composer='docker run --rm -it -v $HOME/.composer:/root/.composer -v $(pwd):/home/app dangdungcntt/php:7.4-nginx composer'
