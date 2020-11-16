@@ -100,3 +100,26 @@ lstart() {
         addVirtualHost $VIRTUAL_HOST
     fi
 }
+
+pstart() {
+    VIRTUAL_HOST=$1
+    if [ "$#" -ne 1 ]; then
+        VIRTUAL_HOST="${PWD##*/}.test"
+    fi
+
+    CONTAINER_NAME="php-`md5 $(pwd)`"
+
+    drm $CONTAINER_NAME -f
+
+    docker run -d \
+        --name $CONTAINER_NAME \
+        --restart=always \
+        --network nginx_docker_network \
+        -v $(pwd):/home/app/public \
+        -e VIRTUAL_HOST=$VIRTUAL_HOST \
+        -e VIRTUAL_PORT=80 \
+        dangdungcntt/php:7.4-nginx
+
+    echo "Started container with domain: $VIRTUAL_HOST"
+    addVirtualHost $VIRTUAL_HOST
+}
