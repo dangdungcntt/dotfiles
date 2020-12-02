@@ -14,6 +14,8 @@ addVirtualHost() {
     fi
 }
 
+alias create-entry="gnome-desktop-item-edit --create-new ~/.local/share/applications"
+
 # Docker
 alias dl="docker logs"
 alias dp="docker ps -a"
@@ -64,9 +66,18 @@ nodepd() {
 }
 
 # PHP
-alias php='docker run --rm -it -v $(pwd):/home/app dangdungcntt/php:7.4-nginx php'
-alias composer='docker run --rm -it -v $HOME/.composer:/root/.composer -v $(pwd):/home/app dangdungcntt/php:7.4-nginx composer'
-alias phpunit='docker run --rm -it -v $(pwd):/home/app dangdungcntt/php:7.4-nginx vendor/bin/phpunit'
+if ! type "php" > /dev/null; then
+    alias php='docker run --rm -it -v $(pwd):/home/app dangdungcntt/php:7.4-nginx php'  
+fi
+
+if ! type "composer" > /dev/null; then
+    alias composer='docker run --rm -it -v $HOME/.composer:/root/.composer -v $(pwd):/home/app dangdungcntt/php:7.4-nginx composer'
+fi
+
+if ! type "composer" > /dev/null; then
+    alias phpunit='docker run --rm -it -v $(pwd):/home/app dangdungcntt/php:7.4-nginx vendor/bin/phpunit'
+fi
+
 alias a="php artisan"
 alias c="composer"
 alias cu="composer update"
@@ -76,9 +87,9 @@ alias cda="composer dump-autoload -o"
 alias hostfile="sudo vim /etc/hosts"
 
 # PHP8
-alias php8='docker run --rm -it -v $(pwd):/usr/src/app dangdungcntt/php:8.0rc3-cli-composer php'
-alias composer8='docker run --rm -it -v $(pwd):/usr/src/app dangdungcntt/php:8.0rc3-cli-composer composer'
-alias phpunit8='docker run --rm -it -v $(pwd):/usr/src/app dangdungcntt/php:8.0rc3-cli-composer vendor/bin/phpunit'
+alias php8='docker run --rm -it -v $(pwd):/usr/src/app dangdungcntt/php:8.0rc4-cli-composer php'
+alias composer8='docker run --rm -it -v $(pwd):/usr/src/app dangdungcntt/php:8.0rc4-cli-composer composer'
+alias phpunit8='docker run --rm -it -v $(pwd):/usr/src/app dangdungcntt/php:8.0rc4-cli-composer vendor/bin/phpunit'
 
 # Laravel
 alias a='php artisan'
@@ -131,3 +142,8 @@ pstart() {
     echo "Started container with domain: $VIRTUAL_HOST"
     addVirtualHost $VIRTUAL_HOST
 }
+
+#include custom alias
+if [ -f ~/.bash_aliases_custom ]; then
+    . ~/.bash_aliases_custom
+fi
