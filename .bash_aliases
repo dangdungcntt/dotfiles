@@ -40,6 +40,7 @@ alias gc='git commit -m'
 alias gp='git push'
 alias gca='ga && gc'
 alias gpo='git push origin'
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 configGit() {
     git config user.email "dangdungcntt@gmail.com"
@@ -66,6 +67,13 @@ nodepd() {
 alias php='docker run --rm -it -v $(pwd):/home/app dangdungcntt/php:7.4-nginx php'
 alias composer='docker run --rm -it -v $HOME/.composer:/root/.composer -v $(pwd):/home/app dangdungcntt/php:7.4-nginx composer'
 alias phpunit='docker run --rm -it -v $(pwd):/home/app dangdungcntt/php:7.4-nginx vendor/bin/phpunit'
+alias a="php artisan"
+alias c="composer"
+alias cu="composer update"
+alias cr="composer require"
+alias ci="composer install"
+alias cda="composer dump-autoload -o"
+alias hostfile="sudo vim /etc/hosts"
 
 # PHP8
 alias php8='docker run --rm -it -v $(pwd):/usr/src/app dangdungcntt/php:8.0rc3-cli-composer php'
