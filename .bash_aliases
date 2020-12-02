@@ -15,6 +15,7 @@ addVirtualHost() {
 }
 
 alias create-entry="gnome-desktop-item-edit --create-new ~/.local/share/applications"
+alias hostfile="sudo vim /etc/hosts"
 
 # Docker
 alias dl="docker logs"
@@ -54,37 +55,39 @@ configGitEway() {
 }
 
 # Node
-alias node='docker run --rm -it -v $(pwd):/home/app -w /home/app node:lts-alpine3.10 node'
-alias npm='docker run --rm -it -v $(pwd):/home/app -w /home/app node:lts-alpine3.10 npm'
+if ! command -v node > /dev/null; then
+    alias node='docker run --rm -it -v $(pwd):/home/app -w /home/app node:lts-alpine3.10 node'
+fi
+
+if ! command -v npm > /dev/null; then
+    alias npm='docker run --rm -it -v $(pwd):/home/app -w /home/app node:lts-alpine3.10 npm'
+fi
 
 nodep() {
     docker run --rm -it -v $(pwd):/home/app -w /home/app --expose $1 -e VIRTUAL_HOST=node.test --network nginx_docker_network node:lts-alpine3.10 node ${@:2}
 }
-
 nodepd() {
     docker run --rm -it -v $(pwd):/home/app -w /home/app --expose $1 -e VIRTUAL_HOST=$2 --network nginx_docker_network node:lts-alpine3.10 node ${@:3}
 }
 
 # PHP
-if ! type "php" > /dev/null; then
+if ! command -v php > /dev/null; then
     alias php='docker run --rm -it -v $(pwd):/home/app dangdungcntt/php:7.4-nginx php'  
 fi
 
-if ! type "composer" > /dev/null; then
+if ! command -v composer > /dev/null; then
     alias composer='docker run --rm -it -v $HOME/.composer:/root/.composer -v $(pwd):/home/app dangdungcntt/php:7.4-nginx composer'
 fi
 
-if ! type "composer" > /dev/null; then
+if ! command -v phpunit > /dev/null; then
     alias phpunit='docker run --rm -it -v $(pwd):/home/app dangdungcntt/php:7.4-nginx vendor/bin/phpunit'
 fi
 
-alias a="php artisan"
 alias c="composer"
 alias cu="composer update"
 alias cr="composer require"
 alias ci="composer install"
 alias cda="composer dump-autoload -o"
-alias hostfile="sudo vim /etc/hosts"
 
 # PHP8
 alias php8='docker run --rm -it -v $(pwd):/usr/src/app dangdungcntt/php:8.0rc4-cli-composer php'
