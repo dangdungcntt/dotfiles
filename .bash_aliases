@@ -43,6 +43,7 @@ alias gc='git commit -m'
 alias gp='git push'
 alias gca='ga && gc'
 alias gpo='git push origin'
+alias gpoci='git push -o ci.skip origin'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 configGit() {
