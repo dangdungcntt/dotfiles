@@ -92,8 +92,8 @@ alias cda="composer dump-autoload -o"
 
 # PHP8
 alias php8='docker run --rm -it -v $(pwd):/home/app dangdungcntt/php:8.0-cli-composer php'
-alias composer8='docker run --rm -it -v $(pwd):/home/app -v ~/.composer8:/root/.composer -e XDEBUG_MODE=coverage dangdungcntt/php:8.0-cli-composer-xdebug composer'
-alias phpunit8='docker run --rm -it -v $(pwd):/home/app -e XDEBUG_MODE=coverage dangdungcntt/php:8.0-cli-composer-xdebug vendor/bin/phpunit'
+alias composer8='docker run --rm -it -v $(pwd):/home/app -v ~/.composer8:/root/.composer -e XDEBUG_MODE=coverage dangdungcntt/php:8.0-cli-xdebug composer'
+alias phpunit8='docker run --rm -it -v $(pwd):/home/app -e XDEBUG_MODE=coverage dangdungcntt/php:8.0-cli-xdebug vendor/bin/phpunit'
 alias pf8='phpunit8 --filter '
 
 # Laravel
