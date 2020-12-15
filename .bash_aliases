@@ -101,6 +101,7 @@ alias pf8='phpunit8 --filter '
 alias a='php artisan'
 lstart() {
     VIRTUAL_HOST=$1
+    PHP_VERSION=${2:-"7.4"}
     if [ "$#" -ne 1 ]; then
         VIRTUAL_HOST="${PWD##*/}.test"
     fi
@@ -108,8 +109,14 @@ lstart() {
     if [ ! -f artisan ]; then
         echo 'Not in Laravel project'
     else 
+        IMAGE_NAME=dangdungcntt/php:${PHP_VERSION}-nginx
         CONTAINER_NAME="php-`md5 $(pwd)`"
 
+        if [ -f Dockerfile ]; then
+            docker build -t $CONTAINER_NAME .
+            IMAGE_NAME=$CONTAINER_NAME
+        fi
+        
         drm $CONTAINER_NAME -f
 
         docker run -d \
@@ -119,7 +126,7 @@ lstart() {
             -v $(pwd):/home/app \
             -e VIRTUAL_HOST=$VIRTUAL_HOST \
             -e VIRTUAL_PORT=80 \
-            dangdungcntt/php:7.4-nginx
+            $IMAGE_NAME
 
         echo "Started container with domain: $VIRTUAL_HOST"
         addVirtualHost $VIRTUAL_HOST
