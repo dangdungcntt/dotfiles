@@ -77,11 +77,11 @@ if ! command -v php > /dev/null; then
 fi
 
 if ! command -v composer > /dev/null; then
-    alias composer='docker run --rm -it -v $HOME/.composer:/root/.composer -v $(pwd):/home/app dangdungcntt/php:7.4-cli-xdebug composer'
+    alias composer='docker run --rm -it -v $HOME/.composer:/root/.composer -v $(pwd):/home/app -e XDEBUG_MODE=coverage dangdungcntt/php:7.4-cli-xdebug composer'
 fi
 
 if ! command -v phpunit > /dev/null; then
-    alias phpunit='docker run --rm -it -v $(pwd):/home/app dangdungcntt/php:7.4-cli-xdebug vendor/bin/phpunit'
+    alias phpunit='docker run --rm -it -v $(pwd):/home/app dangdungcntt/php:7.4-cli-xdebug -e XDEBUG_MODE=coverage vendor/bin/phpunit'
 fi
 
 alias c="composer"
