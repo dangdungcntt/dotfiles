@@ -73,15 +73,15 @@ nodepd() {
 
 # PHP
 if ! command -v php > /dev/null; then
-    alias php='docker run --rm -it -v $(pwd):/home/app dangdungcntt/php:7.4-nginx php'  
+    alias php='docker run --rm -it -v $(pwd):/home/app dangdungcntt/php:7.4-cli-alpine php'  
 fi
 
 if ! command -v composer > /dev/null; then
-    alias composer='docker run --rm -it -v $HOME/.composer:/root/.composer -v $(pwd):/home/app dangdungcntt/php:7.4-nginx composer'
+    alias composer='docker run --rm -it -v $HOME/.composer:/root/.composer -v $(pwd):/home/app dangdungcntt/php:7.4-cli-xdebug composer'
 fi
 
 if ! command -v phpunit > /dev/null; then
-    alias phpunit='docker run --rm -it -v $(pwd):/home/app dangdungcntt/php:7.4-nginx vendor/bin/phpunit'
+    alias phpunit='docker run --rm -it -v $(pwd):/home/app dangdungcntt/php:7.4-cli-xdebug vendor/bin/phpunit'
 fi
 
 alias c="composer"
