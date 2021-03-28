@@ -26,6 +26,7 @@ alias drm="docker rm"
 alias drmi="docker rmi"
 alias dci="docker images | grep none | awk '{print \$3}' | xargs docker rmi"
 alias dcia="docker images | awk '{print \$3}' | xargs docker rmi"
+alias dcv="docker volume rm \$(docker volume ls -q --filter dangling=true)"
 
 dip() { 
     di $1 | jq -r .[0].NetworkSettings.Networks.bridge.IPAddress
