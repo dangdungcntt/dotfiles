@@ -39,7 +39,7 @@ deb() {
 }
 
 # Minio
-alias mc="docker run --rm -it minio/mc"
+alias mc="docker run --rm -it -v ~/.mc:/root/.mc minio/mc"
 
 # Git
 alias gs='git status'
