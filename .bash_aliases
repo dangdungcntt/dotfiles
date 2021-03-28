@@ -38,6 +38,9 @@ deb() {
     docker exec -ti $1 bash
 }
 
+# Minio
+alias mc="docker run --rm -it minio/mc"
+
 # Git
 alias gs='git status'
 alias ga='git add .'
