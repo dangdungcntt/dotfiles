@@ -1,3 +1,5 @@
 md5() {
     echo -n $1 | /sbin/md5
 }
+
+alias cleardns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
