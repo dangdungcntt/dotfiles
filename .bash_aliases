@@ -37,6 +37,9 @@ de() {
 deb() { 
     docker exec -ti $1 bash
 }
+dcig() {
+    docker images | grep $1 | awk '{print $3}' | xargs docker rmi
+}
 
 # Minio
 alias mc="docker run --rm -it -v ~/.mc:/root/.mc minio/mc"
