@@ -73,10 +73,17 @@ if ! command -v npm > /dev/null; then
 fi
 
 nodep() {
-    docker run --rm -it -v $(pwd):/home/app -w /home/app --expose $1 -e VIRTUAL_HOST=node.test --network nginx_docker_network node:lts-alpine3.10 node ${@:2}
+    docker run --rm -it -v $(pwd):/home/app -w /home/app --expose $1 -e VIRTUAL_HOST=remote-node.abc --network nginx_docker_network node:lts-alpine3.10 node ${@:2}
 }
 nodepd() {
     docker run --rm -it -v $(pwd):/home/app -w /home/app --expose $1 -e VIRTUAL_HOST=$2 --network nginx_docker_network node:lts-alpine3.10 node ${@:3}
+}
+
+npmp() {
+    docker run --rm -it -v $(pwd):/home/app -w /home/app --expose $1 -e VIRTUAL_HOST=remote-node.abc --network nginx_docker_network node:lts-alpine3.10 npm ${@:2}
+}
+npmpd() {
+    docker run --rm -it -v $(pwd):/home/app -w /home/app --expose $1 -e VIRTUAL_HOST=$2 --network nginx_docker_network node:lts-alpine3.10 npm ${@:3}
 }
 
 # PHP
