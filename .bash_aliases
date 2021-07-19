@@ -65,11 +65,11 @@ configGitEway() {
 
 # Node
 if ! command -v node > /dev/null; then
-    alias node='docker run --rm -it -v $(pwd):/home/app -w /home/app node:lts-alpine3.10 node'
+   alias node='docker run --rm -it -v $(pwd):/home/app -w /home/app node:lts-alpine3.10 node'
 fi
 
 if ! command -v npm > /dev/null; then
-    alias npm='docker run --rm -it -v $(pwd):/home/app -w /home/app node:lts-alpine3.10 npm'
+   alias npm='docker run --rm -it -v $(pwd):/home/app -w /home/app node:lts-alpine3.10 npm'
 fi
 
 nodep() {

@@ -2,4 +2,9 @@ md5() {
     echo -n $1 | /sbin/md5
 }
 
+lchown() {
+    sudo chown -R dangdung:_www storage bootstrap
+    sudo chmod -R 775 storage bootstrap
+}
+
 alias cleardns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
