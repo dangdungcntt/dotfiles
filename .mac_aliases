@@ -8,3 +8,4 @@ lchown() {
 }
 
 alias cleardns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
+alias rlocal="sudo ifconfig lo0 down && sudo ifconfig lo0 up"
