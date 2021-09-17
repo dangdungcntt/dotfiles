@@ -17,6 +17,12 @@ addVirtualHost() {
 alias create-entry="gnome-desktop-item-edit --create-new ~/.local/share/applications"
 alias hostfile="sudo vim /etc/hosts"
 
+# Kubectl
+alias k="kubectl"
+krh() {
+    kubectl rollout history deployment.apps/$1
+}
+
 # Docker
 alias dl="docker logs"
 alias dp="docker ps -a"
