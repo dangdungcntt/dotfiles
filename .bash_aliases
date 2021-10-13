@@ -14,8 +14,11 @@ addVirtualHost() {
     fi
 }
 
+
 alias create-entry="gnome-desktop-item-edit --create-new ~/.local/share/applications"
 alias hostfile="sudo vim /etc/hosts"
+alias sshconfig="vi ~/.ssh/config"
+alias sites="cd $HOME/code"
 
 # Kubectl
 alias k="kubectl"
@@ -51,6 +54,9 @@ dcig() {
 alias mc="docker run --rm -it -v ~/.mc:/root/.mc minio/mc"
 
 # Git
+alias pull='git pull'
+alias g='git'
+alias nah='git reset --hard;git clean -df'
 alias gs='git status'
 alias ga='git add .'
 alias gc='git commit -m'
@@ -69,42 +75,6 @@ configGitEway() {
     git config user.name "DungND"
 }
 
-# Node
-if ! command -v node > /dev/null; then
-   alias node='docker run --rm -it -v $(pwd):/home/app -w /home/app node:lts-alpine3.10 node'
-fi
-
-if ! command -v npm > /dev/null; then
-   alias npm='docker run --rm -it -v $(pwd):/home/app -w /home/app node:lts-alpine3.10 npm'
-fi
-
-nodep() {
-    docker run --rm -it -v $(pwd):/home/app -w /home/app --expose $1 -e VIRTUAL_HOST=remote-node.abc --network nginx_docker_network node:lts-alpine3.10 node ${@:2}
-}
-nodepd() {
-    docker run --rm -it -v $(pwd):/home/app -w /home/app --expose $1 -e VIRTUAL_HOST=$2 --network nginx_docker_network node:lts-alpine3.10 node ${@:3}
-}
-
-npmp() {
-    docker run --rm -it -v $(pwd):/home/app -w /home/app --expose $1 -e VIRTUAL_HOST=remote-node.abc --network nginx_docker_network node:lts-alpine3.10 npm ${@:2}
-}
-npmpd() {
-    docker run --rm -it -v $(pwd):/home/app -w /home/app --expose $1 -e VIRTUAL_HOST=$2 --network nginx_docker_network node:lts-alpine3.10 npm ${@:3}
-}
-
-# PHP
-if ! command -v php > /dev/null; then
-    alias php='docker run --rm -it -v $(pwd):/home/app dangdungcntt/php:7.4-cli-alpine php'  
-fi
-
-if ! command -v composer > /dev/null; then
-    alias composer='docker run --rm -it -v $HOME/.composer:/root/.composer -v $(pwd):/home/app -e XDEBUG_MODE=coverage dangdungcntt/php:7.4-cli-xdebug composer'
-fi
-
-if ! command -v phpunit > /dev/null; then
-    alias phpunit='docker run --rm -it -v $(pwd):/home/app dangdungcntt/php:7.4-cli-xdebug -e XDEBUG_MODE=coverage vendor/bin/phpunit'
-fi
-
 alias c="composer"
 alias cu="composer update"
 alias cr="composer require"
@@ -112,11 +82,9 @@ alias ci="composer install"
 alias cda="composer dump-autoload -o"
 
 # PHP8
-alias php8='docker run --rm -it -v $(pwd):/home/app dangdungcntt/php:8.0.0-cli-alpine php'
-alias composer8='docker run --rm -it -v $(pwd):/home/app -v ~/.composer8:/root/.composer -e XDEBUG_MODE=coverage dangdungcntt/php:8.0-cli-xdebug composer'
-alias laravel8='docker run --rm -it -v $(pwd):/home/app -v ~/.composer8:/root/.composer -e XDEBUG_MODE=coverage dangdungcntt/php:8.0-cli-xdebug laravel'
-alias phpunit8='docker run --rm -it -v $(pwd):/home/app -e XDEBUG_MODE=coverage dangdungcntt/php:8.0-cli-xdebug vendor/bin/phpunit'
-alias pf8='phpunit8 --filter '
+alias phpunit='./vendor/bin/phpunit'
+alias p='./vendor/bin/pest'
+alias pf='p --filter '
 
 # Laravel
 alias a='php artisan'
