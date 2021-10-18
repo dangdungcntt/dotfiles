@@ -70,10 +70,6 @@ configGit() {
     git config user.email "dangdungcntt@gmail.com"
     git config user.name "Dung Nguyen Dang"
 }
-configGitEway() {
-    git config user.email "dungnd@eway.vn"
-    git config user.name "DungND"
-}
 
 alias c="composer"
 alias cu="composer update"
