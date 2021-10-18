@@ -88,6 +88,17 @@ alias pf='p --filter '
 
 # Laravel
 alias a='php artisan'
+
+t()
+{
+    if [ -z "$1" ]
+        then
+            php artisan tinker
+        else
+            php artisan tinker --execute="dd($1);"
+    fi
+}
+
 lstart() {
     VIRTUAL_HOST=$1
     PHP_VERSION=${2:-"7.4"}
