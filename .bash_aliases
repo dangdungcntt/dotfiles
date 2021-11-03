@@ -16,9 +16,9 @@ addVirtualHost() {
 
 
 alias create-entry="gnome-desktop-item-edit --create-new ~/.local/share/applications"
-alias hostfile="sudo vim /etc/hosts"
+alias h="sudo vim /etc/hosts"
 alias sshconfig="vi ~/.ssh/config"
-alias sites="cd $HOME/code"
+alias s="cd $HOME/code"
 
 # Kubectl
 alias k="kubectl"
@@ -71,6 +71,19 @@ configGit() {
     git config user.name "Dung Nguyen Dang"
 }
 
+node14() {
+    docker run --rm -it -v ~/.npm/node14:/usr/local/lib/node_modules -v $(pwd):/home/app -w /home/app -p ${1:-3000}:${1:-3000} node:14-alpine sh
+}
+
+node12() {
+    docker run --rm -it -v ~/.npm/node12:/usr/local/lib/node_modules -v $(pwd):/home/app -w /home/app -p ${1:-3000}:${1:-3000} node:12-alpine sh
+}
+
+node10() {
+    docker run --rm -it -v ~/.npm/node10:/usr/local/lib/node_modules -v $(pwd):/home/app -w /home/app -p ${1:-3000}:${1:-3000} node:10-alpine sh
+}
+
+# Composer
 alias c="composer"
 alias cu="composer update"
 alias cr="composer require"
