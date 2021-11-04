@@ -72,15 +72,15 @@ configGit() {
 }
 
 node14() {
-    docker run --rm -it -v ~/.npm/node14:/usr/local/lib/node_modules -v $(pwd):/home/app -w /home/app -p ${1:-3000}:${1:-3000} node:14-alpine sh
+    docker run --rm -it -v $(pwd):/home/app -w /home/app -p ${1:-3000}:${1:-3000} node:14-alpine sh
 }
 
 node12() {
-    docker run --rm -it -v ~/.npm/node12:/usr/local/lib/node_modules -v $(pwd):/home/app -w /home/app -p ${1:-3000}:${1:-3000} node:12-alpine sh
+    docker run --rm -it -v $(pwd):/home/app -w /home/app -p ${1:-3000}:${1:-3000} node:12-alpine sh
 }
 
 node10() {
-    docker run --rm -it -v ~/.npm/node10:/usr/local/lib/node_modules -v $(pwd):/home/app -w /home/app -p ${1:-3000}:${1:-3000} node:10-alpine sh
+    docker run --rm -it -v $(pwd):/home/app -w /home/app -p ${1:-3000}:${1:-3000} node:10-alpine sh
 }
 
 # Composer
