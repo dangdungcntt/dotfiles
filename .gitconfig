@@ -1,0 +1,11 @@
+[init]
+	defaultBranch = master
+[pull]
+	rebase = true
+
+[user]
+name = Dung Nguyen Dang
+email = dangdungcntt@gmail.com
+
+[includeIf "gitdir:~/eway/"]
+  path = ~/.gitconfig-eway
