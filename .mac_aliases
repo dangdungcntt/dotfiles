@@ -10,7 +10,7 @@ lchown() {
 alias o="open ."
 alias cleardns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 alias rlocal="sudo ifconfig lo0 down && sudo ifconfig lo0 up"
-alias gop='open https://$(git config --get remote.origin.url | cut -d"@" -f 2 | sed "s|:|/|g" | sed "s|.git||g")'
+alias gop='open https://$(git config --get remote.origin.url | cut -d"@" -f 2 |  sed "s|https://||g" | sed "s|:|/|g" | sed "s|.git$||g")'
 
 # PhpStorm
 alias pstorm='open -a /Applications/PhpStorm.app "`pwd`"'
