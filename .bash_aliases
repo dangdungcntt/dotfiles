@@ -19,6 +19,8 @@ alias create-entry="gnome-desktop-item-edit --create-new ~/.local/share/applicat
 alias h="sudo vim /etc/hosts"
 alias sshconfig="vi ~/.ssh/config"
 alias s="cd $HOME/code"
+alias cat="bat -p"
+
 
 # Kubectl
 alias k="kubectl"
@@ -71,16 +73,8 @@ configGit() {
     git config user.name "Dung Nguyen Dang"
 }
 
-node14() {
-    docker run --rm -it -v $(pwd):/home/app -w /home/app -p ${1:-3000}:${1:-3000} node:14-alpine sh
-}
-
-node12() {
-    docker run --rm -it -v $(pwd):/home/app -w /home/app -p ${1:-3000}:${1:-3000} node:12-alpine sh
-}
-
-node10() {
-    docker run --rm -it -v $(pwd):/home/app -w /home/app -p ${1:-3000}:${1:-3000} node:10-alpine sh
+node16() {
+    docker run --rm -it -v $(pwd):/home/app -w /home/app -p ${1:-3000}:${1:-3000} node:16-alpine sh
 }
 
 # Composer
