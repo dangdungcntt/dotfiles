@@ -52,6 +52,12 @@ dcig() {
     docker images | grep $1 | awk '{print $3}' | xargs docker rmi
 }
 
+# NDDApp CLI
+
+alias np="nddapp password"
+alias nu="nddapp uuid"
+alias nsql="nddapp sql"
+
 # Minio
 alias mc="docker run --rm -it -v ~/.mc:/root/.mc minio/mc"
 

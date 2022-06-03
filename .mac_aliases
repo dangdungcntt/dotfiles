@@ -15,3 +15,8 @@ alias gwd='echo -n "$(pwd)" | pbcopy'
 
 # PhpStorm
 export PATH=$HOME/.local/bin:$PATH
+
+# Zsh key binding
+
+bindkey '^[[D' beginning-of-line
+bindkey '^[[C' end-of-line
