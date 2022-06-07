@@ -88,6 +88,7 @@ alias c="composer"
 alias cu="composer update"
 alias cr="composer require"
 alias ci="composer install"
+alias ccc="composer clear-cache"
 alias cda="composer dump-autoload -o"
 
 # PHP8
