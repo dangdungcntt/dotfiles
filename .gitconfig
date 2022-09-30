@@ -2,7 +2,8 @@
 	defaultBranch = master
 [pull]
 	rebase = true
-
+[push]
+        autoSetupRemote = true
 [user]
 name = Dung Nguyen Dang
 email = dangdungcntt@gmail.com
