@@ -61,6 +61,9 @@ alias nsql="nddapp sql"
 # Minio
 alias mc="docker run --rm -it -v ~/.mc:/root/.mc minio/mc"
 
+# Make
+alias mmake='[ -r .env ] && cat .env | xargs make'
+
 # Git
 alias pull='git pull'
 alias g='git'
@@ -77,10 +80,6 @@ alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset
 configGit() {
     git config user.email "dangdungcntt@gmail.com"
     git config user.name "Dung Nguyen Dang"
-}
-
-node16() {
-    docker run --rm -it -v $(pwd):/home/app -w /home/app -p ${1:-3000}:${1:-3000} node:16-alpine sh
 }
 
 # Composer
