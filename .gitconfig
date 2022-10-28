@@ -10,3 +10,6 @@ email = dangdungcntt@gmail.com
 
 [includeIf "gitdir:~/eway/"]
   path = ~/.gitconfig-eway
+
+[includeIf "gitdir:~/xa/"]
+  path = ~/.gitconfig-xa
