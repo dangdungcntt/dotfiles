@@ -94,6 +94,7 @@ alias cda="composer dump-autoload -o"
 alias phpunit='./vendor/bin/phpunit'
 alias p='./vendor/bin/pest'
 alias pf='p --filter '
+alias pd="docker exec -ti \$(basename \$(pwd)) sh"
 
 # Laravel
 alias a='php artisan'
