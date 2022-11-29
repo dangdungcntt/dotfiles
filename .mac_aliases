@@ -11,7 +11,7 @@ alias o="open ."
 alias cleardns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 alias rlocal="sudo ifconfig lo0 down && sudo ifconfig lo0 up"
 alias gopr='open https://$(git config --get remote.origin.url | cut -d"@" -f 2 |  sed "s|https://||g" | sed "s|:|/|g" | sed "s|.git$||g")'
-alias gop='open https://$(git config --get remote.origin.url | cut -d"@" -f 2 |  sed "s|https://||g" | sed "s|:|/|g" | sed "s|.git$||g")/-/pipelines'
+alias gop='open https://$(git config --get remote.origin.url | cut -d"@" -f 2 |  sed "s|https://||g" | sed "s|:|/|g" | sed "s|.git$||g")/-/pipelines/latest'
 alias gwd='echo -n "$(pwd)" | pbcopy'
 
 # PhpStorm
