@@ -3,13 +3,13 @@
 [pull]
 	rebase = true
 [push]
-        autoSetupRemote = true
+    autoSetupRemote = true
 [user]
-name = Dung Nguyen Dang
-email = dangdungcntt@gmail.com
+    name = Dung Nguyen Dang
+    email = dangdungcntt@gmail.com
 
 [includeIf "gitdir:~/eway/"]
-  path = ~/.gitconfig-eway
+    path = ~/.gitconfig-eway
 
 [includeIf "gitdir:~/xa/"]
-  path = ~/.gitconfig-xa
+    path = ~/.gitconfig-xa
