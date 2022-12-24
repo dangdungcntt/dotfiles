@@ -14,6 +14,9 @@ addVirtualHost() {
     fi
 }
 
+sshfg() {
+    ssh-keygen -E ${1:-md5} -lf ~/.ssh/id_rsa.pub
+}
 
 alias create-entry="gnome-desktop-item-edit --create-new ~/.local/share/applications"
 alias h="sudo vim /etc/hosts"
