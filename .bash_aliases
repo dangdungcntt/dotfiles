@@ -71,7 +71,8 @@ alias mc="docker run --rm -it -v ~/.mc:/root/.mc minio/mc"
 alias mmake='[ -r .env ] && cat .env | xargs make'
 
 # Git
-alias pull='git pull'
+alias p='git pull'
+alias gf='git fetch'
 alias g='git'
 alias nah='git reset --hard;git clean -df'
 alias gs='git status'
@@ -99,7 +100,7 @@ alias cda="composer dump-autoload -o"
 
 # PHP8
 alias phpunit='./vendor/bin/phpunit'
-alias p='./vendor/bin/pest'
+alias pe='./vendor/bin/pest'
 alias pf='p --filter '
 alias pd="docker exec -ti \$(basename \$(pwd)) sh"
 
