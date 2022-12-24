@@ -58,6 +58,9 @@ alias np="nddapp password"
 alias nu="nddapp uuid"
 alias nsql="nddapp sql"
 
+# Node
+alias nt="npm run test"
+
 # Minio
 alias mc="docker run --rm -it -v ~/.mc:/root/.mc minio/mc"
 
