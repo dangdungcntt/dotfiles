@@ -19,6 +19,15 @@ alias gop='open https://$(git config --get remote.origin.url | cut -d"@" -f 2 | 
 alias gocp='open https://$(git config --get remote.origin.url | cut -d"@" -f 2 |  sed "s|https://||g" | sed "s|:|/|g" | sed "s|.git$||g")/-/commit/$(git rev-parse HEAD)/pipelines'
 alias gwd='echo -n "$(pwd)" | pbcopy'
 
+# Blockchain
+eth() {
+    open "https://etherscan.io/search?q=$1"
+}
+
+bsc() {
+    open "https://bscscan.com/search?q=$1"
+}
+
 # PhpStorm
 export PATH=$HOME/.local/bin:$PATH
 
