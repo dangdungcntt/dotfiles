@@ -11,7 +11,7 @@ alias o="open ."
 alias cleardns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 alias rlocal="sudo ifconfig lo0 down && sudo ifconfig lo0 up"
 gom() {
-    open "https://$(git config --get remote.origin.url | cut -d"@" -f 2 |  sed "s|https://||g" | sed "s|:|/|g" | sed "s|.git$||g")/-/merge_requests/new?merge_request%5Bsource_branch%5D=$(git branch --show-current)&merge_request%5Btarget_branch%5D=${1:-$(git config user.defaultTargetBranch)}"
+    open "https://$(git config --get remote.origin.url | cut -d"@" -f 2 |  sed "s|https://||g" | sed "s|:|/|g" | sed "s|.git$||g")/-/merge_requests/new?merge_request%5Bsource_branch%5D=$(git branch --show-current)&merge_request%5Btarget_branch%5D=${1:-$(git config user.defaultTargetBranch)}&merge_request%5Bassignee_ids%5D%5B%5D=$(git config user.defaultAssigneeId)"
 }
 alias gdb="git config user.defaultTargetBranch"
 alias gor='open https://$(git config --get remote.origin.url | cut -d"@" -f 2 |  sed "s|https://||g" | sed "s|:|/|g" | sed "s|.git$||g")'
