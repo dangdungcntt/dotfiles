@@ -2,3 +2,4 @@
 name = <User>
 email = <Email>
 defaultTargetBranch = main
+defaultAssigneeId = 1
