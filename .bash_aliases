@@ -41,6 +41,9 @@ alias drmi="docker rmi"
 alias dci="docker images | grep none | awk '{print \$3}' | xargs docker rmi"
 alias dcia="docker images | awk '{print \$3}' | xargs docker rmi"
 alias dcv="docker volume rm \$(docker volume ls -q --filter dangling=true)"
+alias dcc="docker compose"
+alias dcu="docker compose up -d"
+alias dcd="docker compose down"
 
 dip() { 
     di $1 | jq -r .[0].NetworkSettings.Networks.bridge.IPAddress

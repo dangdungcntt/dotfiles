@@ -8,5 +8,8 @@
     name = Dung Nguyen Dang
     email = dangdungcntt@gmail.com
 
+[includeIf "gitdir:~/ew/"]
+    path = ~/.gitconfig-ew
+
 [includeIf "gitdir:~/xa/"]
     path = ~/.gitconfig-xa
