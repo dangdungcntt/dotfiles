@@ -18,7 +18,7 @@ gom() {
 }
 alias gdb="git config user.defaultTargetBranch"
 alias gor='open $(gcru)'
-alias gop='open $(gcru)/-/pipelines/latest'
+alias gop='open $(gcru)/-/pipelines'
 alias gocp='open $(gcru)/-/commit/$(git rev-parse HEAD)/pipelines'
 
 alias gwd='echo -n "$(pwd)" | pbcopy'
