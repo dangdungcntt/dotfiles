@@ -3,3 +3,4 @@
 .gitconfig-*
 !.gitconfig-template
 .vscode
+.idea
