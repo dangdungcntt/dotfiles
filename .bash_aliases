@@ -115,6 +115,34 @@ setupGolangHook() {
     echo "Created $hook_file"
 }
 
+setupPHPHook() {
+    hook_file=".git/hooks/pre-commit"
+    force_override=false
+
+    while getopts ":f" opt; do
+        case ${opt} in
+            f )
+            force_override=true
+            ;;
+            \? )
+            echo "Invalid option: -$OPTARG" 1>&2
+            return 1
+            ;;
+        esac
+    done
+
+    if [ -f "$hook_file" ] && [ "$force_override" = false ]; then
+        echo "$hook_file already exists, skipping creation."
+        return
+    fi
+
+    echo "#!/bin/bash" > "$hook_file"
+    echo 'echo "Running Laravel Pint to check style. Please fix all error before commit"' >> "$hook_file"
+    echo "php ./vendor/bin/pint --test" >> "$hook_file"
+    chmod +x "$hook_file"
+    echo "Created $hook_file"
+}
+
 configGit() {
     git config user.email "dangdungcntt@gmail.com"
     git config user.name "Dung Nguyen Dang"

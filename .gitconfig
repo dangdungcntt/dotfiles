@@ -13,3 +13,5 @@
 
 [includeIf "gitdir:~/xa/"]
     path = ~/.gitconfig-xa
+[core]
+	autocrlf = input
