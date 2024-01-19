@@ -31,6 +31,9 @@ krh() {
     kubectl rollout history deployment.apps/$1
 }
 
+# Terraform
+alias tf="terraform"
+
 # Docker
 alias dl="docker logs"
 alias dp="docker ps -a"
@@ -61,7 +64,7 @@ dcig() {
 # NDDApp CLI
 
 alias np="nddapp password"
-alias nu="nddapp uuid"
+alias nuid="nddapp uuid"
 alias nsql="nddapp sql"
 
 # Node
@@ -110,6 +113,8 @@ setupGolangHook() {
     fi
 
     echo "#!/bin/bash" > "$hook_file"
+    echo "sed -i '' '/^replace /s/^/\/\//' go.mod" >> "$hook_file"
+    echo "git add go.mod" >> "$hook_file"
     echo "golangci-lint run" >> "$hook_file"
     chmod +x "$hook_file"
     echo "Created $hook_file"
