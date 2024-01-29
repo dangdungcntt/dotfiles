@@ -112,6 +112,8 @@ setupGolangHook() {
         return
     fi
 
+    mkdir -p .git/hooks
+
     echo "#!/bin/bash" > "$hook_file"
     echo "sed -i '' '/^replace /s/^/\/\//' go.mod" >> "$hook_file"
     echo "git add go.mod" >> "$hook_file"

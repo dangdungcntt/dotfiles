@@ -13,6 +13,12 @@ echo "source $(pwd)/.bash_aliases" >> ~/.zshrc
 ln -s $(pwd)/.gitconfig ~/.gitconfig
 ```
 
+## Custom .gitconfig
+
+```bash
+ln -s $(pwd)/.gitconfig-custom ~/.gitconfig-custom
+```
+
 ## Laravel Tinker in $HOME folder
 
 ```bash
