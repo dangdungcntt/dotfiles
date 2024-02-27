@@ -21,6 +21,7 @@ sshfg() {
 alias create-entry="gnome-desktop-item-edit --create-new ~/.local/share/applications"
 alias h="sudo vim /etc/hosts"
 alias sshconfig="vi ~/.ssh/config"
+alias cd="z"
 alias s="cd $HOME/code"
 alias cat="bat -p"
 
