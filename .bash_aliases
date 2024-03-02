@@ -50,7 +50,7 @@ alias dcu="docker compose up -d"
 alias dcd="docker compose down"
 
 dip() { 
-    di $1 | jq -r .[0].NetworkSettings.Networks.bridge.IPAddress
+    di $1 | jq -r '.[0].NetworkSettings.IPAddress'
 }
 de() { 
     docker exec -ti $1 sh
