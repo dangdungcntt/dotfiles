@@ -74,6 +74,9 @@ alias nt="npm run test"
 # Minio
 alias mc="docker run --rm -it -v ~/.mc:/root/.mc minio/mc"
 
+# psql
+alias psql="docker run -ti --rm alpine/psql"
+
 # Make
 alias mmake='[ -r .env ] && cat .env | xargs make'
 
