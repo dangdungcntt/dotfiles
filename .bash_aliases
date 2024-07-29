@@ -126,6 +126,10 @@ setupGolangHook() {
     echo "Created $hook_file"
 }
 
+addGitAttributes() {
+    curl -Os https://raw.githubusercontent.com/dangdungcntt/dotfiles/master/.gitattributes
+}
+
 setupPHPHook() {
     hook_file=".git/hooks/pre-commit"
     force_override=false
