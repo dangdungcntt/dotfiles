@@ -128,6 +128,7 @@ setupGolangHook() {
 
 addGitAttributes() {
     curl -Os https://raw.githubusercontent.com/dangdungcntt/dotfiles/master/.gitattributes
+    git add --update --renormalize
 }
 
 setupPHPHook() {
