@@ -24,6 +24,7 @@ alias sshconfig="vi ~/.ssh/config"
 alias cd="z"
 alias s="cd $HOME/code"
 alias cat="bat -p"
+alias topsize="du -h -d 1 | sort -rh | head -n"
 
 
 # Kubectl
