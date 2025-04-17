@@ -3,8 +3,24 @@
 ### Dependencies
 
 ```bash
-sudo apt install -y vim curl
+# Install deps
+sudo apt install -y vim curl bat
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+
+# --- Link batcat to ~/.local/bin/bat if needed ---
+mkdir -p "$HOME/.local/bin"
+if command -v batcat &>/dev/null; then
+    if [ ! -f "$HOME/.local/bin/bat" ]; then
+        ln -s "$(command -v batcat)" "$HOME/.local/bin/bat"
+        echo "Linked batcat to ~/.local/bin/bat"
+    else
+        echo "~/.local/bin/bat already exists, skipping symlink"
+    fi
+else
+    echo "batcat not found — something went wrong with apt install"
+    exit 1
+fi
+
 # Add ~/.local/bin to PATH if not already present
 if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
     echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
