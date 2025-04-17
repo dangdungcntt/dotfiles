@@ -1,14 +1,17 @@
 ## Linux
 
+### Dependencies
+
+```bash
+sudo apt install -y vim curl
+curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+```
+
+### Create symlink for configs
+
 ```bash
 ln -s $(pwd)/.bash_aliases ~/.bash_aliases
 ln -s $(pwd)/.gitconfig ~/.gitconfig
-```
-
-Install `zoxide`
-
-```bash
-curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 ```
 
 ## Mac
@@ -21,14 +24,4 @@ ln -s $(pwd)/.gitconfig ~/.gitconfig
 
 ## Custom .gitconfig
 
-```bash
-ln -s $(pwd)/.gitconfig-custom ~/.gitconfig-custom
-```
-
-## Laravel Tinker in $HOME folder
-
-```bash
-cd $HOME
-composer create-project laravel/laravel tinkerhome
-ln -s $HOME/tinkerhome/artisan ~/artisan
-```
+Create new gitconfig file and update `.gitconfig` 
