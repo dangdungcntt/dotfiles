@@ -5,6 +5,12 @@ ln -s $(pwd)/.bash_aliases ~/.bash_aliases
 ln -s $(pwd)/.gitconfig ~/.gitconfig
 ```
 
+Install `zoxide`
+
+```bash
+curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+```
+
 ## Mac
 
 ```bash
