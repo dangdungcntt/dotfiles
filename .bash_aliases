@@ -14,13 +14,14 @@ addVirtualHost() {
     fi
 }
 
+# Get public key fingerprint
 sshfg() {
     ssh-keygen -E ${1:-md5} -lf ~/.ssh/id_rsa.pub
 }
 
 alias create-entry="gnome-desktop-item-edit --create-new ~/.local/share/applications"
 alias h="sudo vim /etc/hosts"
-alias sshconfig="vi ~/.ssh/config"
+alias sshconfig="vim ~/.ssh/config"
 alias cd="z"
 alias s="cd $HOME/code"
 alias cat="bat -p"
@@ -29,9 +30,6 @@ alias topsize="du -h -d 1 | sort -rh | head -n"
 
 # Kubectl
 alias k="kubectl"
-krh() {
-    kubectl rollout history deployment.apps/$1
-}
 
 # Terraform
 alias tf="terraform"
@@ -63,12 +61,6 @@ dcig() {
     docker images | grep $1 | awk '{print $3}' | xargs docker rmi
 }
 
-# NDDApp CLI
-
-alias np="nddapp password"
-alias nuid="nddapp uuid"
-alias nsql="nddapp sql"
-
 # Node
 alias nt="npm run test"
 
@@ -77,9 +69,6 @@ alias mc="docker run --rm -it -v ~/.mc:/root/.mc minio/mc"
 
 # psql
 alias psql="docker run -ti --rm alpine/psql"
-
-# Make
-alias mmake='[ -r .env ] && cat .env | xargs make'
 
 # Git
 alias p='git pull'
@@ -132,121 +121,9 @@ addGitAttributes() {
     git add --update --renormalize
 }
 
-setupPHPHook() {
-    hook_file=".git/hooks/pre-commit"
-    force_override=false
-
-    while getopts ":f" opt; do
-        case ${opt} in
-            f )
-            force_override=true
-            ;;
-            \? )
-            echo "Invalid option: -$OPTARG" 1>&2
-            return 1
-            ;;
-        esac
-    done
-
-    if [ -f "$hook_file" ] && [ "$force_override" = false ]; then
-        echo "$hook_file already exists, skipping creation."
-        return
-    fi
-
-    echo "#!/bin/bash" > "$hook_file"
-    echo 'echo "Running Laravel Pint to check style. Please fix all error before commit"' >> "$hook_file"
-    echo "php ./vendor/bin/pint --test" >> "$hook_file"
-    chmod +x "$hook_file"
-    echo "Created $hook_file"
-}
-
 configGit() {
     git config user.email "dangdungcntt@gmail.com"
     git config user.name "Dung Nguyen Dang"
-}
-
-# Composer
-alias c="composer"
-alias cu="composer update"
-alias cr="composer require"
-alias ci="composer install"
-alias ccc="composer clear-cache"
-alias cda="composer dump-autoload -o"
-
-# PHP8
-alias phpunit='./vendor/bin/phpunit'
-alias pe='./vendor/bin/pest'
-alias pf='p --filter '
-alias pd="docker exec -ti \$(basename \$(pwd)) sh"
-
-# Laravel
-alias a='php artisan'
-
-t()
-{
-    if [ -z "$1" ]
-        then
-            php artisan tinker
-        else
-            php artisan tinker --execute="dd($1);"
-    fi
-}
-
-lstart() {
-    VIRTUAL_HOST=$1
-    PHP_VERSION=${2:-"7.4"}
-    if [ "$#" -ne 1 ]; then
-        VIRTUAL_HOST="${PWD##*/}.test"
-    fi
-
-    if [ ! -f artisan ]; then
-        echo 'Not in Laravel project'
-    else 
-        IMAGE_NAME=dangdungcntt/php:${PHP_VERSION}-nginx
-        CONTAINER_NAME="php-`md5 $(pwd)`"
-
-        if [ -f Dockerfile ]; then
-            docker build -t $CONTAINER_NAME .
-            IMAGE_NAME=$CONTAINER_NAME
-        fi
-        
-        drm $CONTAINER_NAME -f
-
-        docker run -d \
-            --name $CONTAINER_NAME \
-            --restart=always \
-            --network nginx_docker_network \
-            -v $(pwd):/home/app \
-            -e VIRTUAL_HOST=$VIRTUAL_HOST \
-            -e VIRTUAL_PORT=80 \
-            $IMAGE_NAME
-
-        echo "Started container with domain: $VIRTUAL_HOST"
-        addVirtualHost $VIRTUAL_HOST
-    fi
-}
-
-pstart() {
-    VIRTUAL_HOST=$1
-    if [ "$#" -ne 1 ]; then
-        VIRTUAL_HOST="${PWD##*/}.test"
-    fi
-
-    CONTAINER_NAME="php-`md5 $(pwd)`"
-
-    drm $CONTAINER_NAME -f
-
-    docker run -d \
-        --name $CONTAINER_NAME \
-        --restart=always \
-        --network nginx_docker_network \
-        -v $(pwd):/home/app/public \
-        -e VIRTUAL_HOST=$VIRTUAL_HOST \
-        -e VIRTUAL_PORT=80 \
-        dangdungcntt/php:7.4-nginx
-
-    echo "Started container with domain: $VIRTUAL_HOST"
-    addVirtualHost $VIRTUAL_HOST
 }
 
 #include custom alias
