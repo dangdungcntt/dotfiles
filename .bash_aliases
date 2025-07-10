@@ -111,6 +111,7 @@ setupGolangHook() {
     echo "#!/bin/bash" > "$hook_file"
     echo "sed -i '' '/^replace /s/^/\/\//' go.mod" >> "$hook_file"
     echo "git add go.mod" >> "$hook_file"
+    echo "golangci-lint fmt" >> "$hook_file"
     echo "golangci-lint run" >> "$hook_file"
     chmod +x "$hook_file"
     echo "Created $hook_file"
