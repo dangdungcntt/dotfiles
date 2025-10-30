@@ -2,11 +2,6 @@ md5() {
     echo -n $1 | /sbin/md5
 }
 
-lchown() {
-    sudo chown -R dangdung:_www storage bootstrap
-    sudo chmod -R 775 storage bootstrap
-}
-
 alias o="open ."
 alias cleardns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 alias rlocal="sudo ifconfig lo0 down && sudo ifconfig lo0 up"
@@ -18,21 +13,10 @@ gom() {
 }
 alias gdb="git config user.defaultTargetBranch"
 alias gor='open $(gcru)'
-alias gop='open $(gcru)/-/pipelines'
-alias gocp='open $(gcru)/-/commit/$(git rev-parse HEAD)/pipelines'
+alias gop='remote=$(gcru); [[ "$remote" == *github.com* ]] && open "$remote/actions" || open "$remote/-/pipelines"'
 
 alias gwd='echo -n "$(pwd)" | pbcopy'
 
-# Blockchain
-eth() {
-    open "https://etherscan.io/search?q=$1"
-}
-
-bsc() {
-    open "https://bscscan.com/search?q=$1"
-}
-
-# Jetbrains entry
 export PATH=$HOME/.local/bin:$PATH
 
 # Zsh key binding
