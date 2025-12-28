@@ -9,7 +9,21 @@ alias rlocal="sudo ifconfig lo0 down && sudo ifconfig lo0 up"
 # Git
 alias gcru='echo https://$(git config --get remote.origin.url | cut -d"@" -f 2 |  sed "s|https://||g" | sed "s|:|/|g" | sed "s|.git$||g")'
 gom() {
-    open "$(gcru)/-/merge_requests/new?merge_request%5Bsource_branch%5D=$(git branch --show-current)&merge_request%5Btarget_branch%5D=${1:-$(git config user.defaultTargetBranch)}&merge_request%5Bassignee_ids%5D%5B%5D=$(git config user.defaultAssigneeId)"
+    local repo_url source_branch target_branch assignee_id
+
+    repo_url="$(gcru)"
+    source_branch="$(git branch --show-current)"
+    target_branch="${1:-$(git config user.defaultTargetBranch || echo main)}"
+    assignee_id="$(git config user.defaultAssigneeId)"
+    if [[ "$repo_url" =~ github\.com ]]; then
+        # GitHub Pull Request
+        # Format: https://github.com/org/repo/compare/base...head
+        open "${repo_url}/compare/${target_branch}...${source_branch}?expand=1"
+    else
+        # GitLab Merge Request
+        # Format: https://gitlab.com/org/repo/-/merge_requests/new
+        open "${repo_url}/-/merge_requests/new?merge_request[source_branch]=${source_branch}&merge_request[target_branch]=${target_branch}${assignee_id:+&merge_request[assignee_ids][]=${assignee_id}}"
+    fi
 }
 alias gdb="git config user.defaultTargetBranch"
 alias gor='open $(gcru)'
